@@ -1,12 +1,11 @@
 const mongoose = require('mongoose') ;
-const { type } = require('os');
+
 
 const product = new mongoose.Schema({
-    image: String,
+    image: Buffer,
     name :{
         type: String
     } ,
-
     price: Number,
     discount: {
         type:Number,

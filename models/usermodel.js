@@ -1,8 +1,5 @@
 const mongoose = require('mongoose') ;
-const { type } = require('os');
-
-
-mongoose.connect("mongodb://localhost:27017/chicpacks") ;
+const productmodel = require('./productmodel');
 
 const user = new mongoose.Schema({
     fullname:{
@@ -12,11 +9,12 @@ const user = new mongoose.Schema({
     contact: Number,
     picture: String,
     password:String,
-    Cart:{
-        type:Array,
-        default:[]
-    },
-    isadmin:Boolean,
+    Cart:[
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "productmodel" ,
+        }
+    ],
     orders:{
         type:Array,
         default:[]
